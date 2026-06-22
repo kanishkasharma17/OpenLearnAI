@@ -10,7 +10,7 @@ const enrollmentRoutes = require("./routes/enrollmentRoutes");
 const app = express();
 const quizRoutes = require("./routes/quizRoutes");
 const questionRoutes = require("./routes/questionRoutes");
-
+const attemptRoutes= require("./routes/attemptRoutes");
 app.use(cors());
 app.use(express.json());
 
@@ -24,4 +24,5 @@ app.use("/api/courses", courseRoutes);
 app.use("/api/enrollments", enrollmentRoutes);
 app.use("/api/quizzes", quizRoutes);
 app.use("/api/questions",questionRoutes);
+app.use("/api/attempts",attemptRoutes);
 module.exports = app;
