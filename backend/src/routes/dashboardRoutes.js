@@ -5,7 +5,9 @@ const router = express.Router();
 const authMiddleware = require("../middleware/authMiddleware");
 
 const {
-    getStudentDashboard
+    getStudentDashboard,
+    getLeaderboard,
+    getCourseAnalytics
 } = require("../controllers/dashboardController");
 
 router.get(
@@ -13,5 +15,14 @@ router.get(
     authMiddleware,
     getStudentDashboard
 );
-
+router.get(
+    "/leaderboard",
+    authMiddleware,
+    getLeaderboard
+);
+router.get(
+    "/course/:courseId",
+    authMiddleware,
+    getCourseAnalytics
+);
 module.exports = router;
