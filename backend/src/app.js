@@ -14,6 +14,7 @@ const attemptRoutes= require("./routes/attemptRoutes");
 const lessonRoutes=require("./routes/lessonRoutes");
 const progressRoutes=require("./routes/progressRoutes");
 const dashboardRoutes=require("./routes/dashboardRoutes");
+const activityRoutes=require("./routes/activityRoutes");
 app.use(cors());
 app.use(express.json());
 
@@ -31,4 +32,5 @@ app.use("/api/attempts",attemptRoutes);
 app.use("/api/lessons",lessonRoutes);
 app.use("/api/progress",progressRoutes);
 app.use("/api/dashboard",dashboardRoutes);
+app.use("/api/activity",activityRoutes);
 module.exports = app;
