@@ -129,9 +129,42 @@ const getCourseAnalytics = async (req, res) => {
         });
     }
 };
+const getTopStudents = async (req, res) => {
+    
+    try {
+        const courseId = req.params.courseId;
+        console.log(courseId);
+        const result = await pool.query(
+            `SELECT
+                u.id AS student_id,
+                u.name,
+                ROUND(AVG(qa.score),2) AS average_score
+             FROM users u
+             JOIN quiz_attempts qa
+                 ON u.id = qa.student_id
+             JOIN quizzes q
+                 ON qa.quiz_id = q.id
+             WHERE q.course_id = $1
+             GROUP BY u.id, u.name
+             ORDER BY average_score DESC
+             LIMIT 5`,
+            [courseId]
+        );
+
+        res.json(result.rows);
+
+    } catch (error) {
+        console.error(error);
+
+        res.status(500).json({
+            message: "Server Error"
+        });
+    }
+};
 
 module.exports = {
     getStudentDashboard,
     getLeaderboard,
-    getCourseAnalytics
+    getCourseAnalytics,
+    getTopStudents
 };
