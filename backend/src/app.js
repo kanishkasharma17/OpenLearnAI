@@ -15,6 +15,7 @@ const lessonRoutes=require("./routes/lessonRoutes");
 const progressRoutes=require("./routes/progressRoutes");
 const dashboardRoutes=require("./routes/dashboardRoutes");
 const activityRoutes=require("./routes/activityRoutes");
+const mlRoutes=require("./routes/mlRoutes");
 app.use(cors());
 app.use(express.json());
 
@@ -33,4 +34,5 @@ app.use("/api/lessons",lessonRoutes);
 app.use("/api/progress",progressRoutes);
 app.use("/api/dashboard",dashboardRoutes);
 app.use("/api/activity",activityRoutes);
+app.use("/api/ml",mlRoutes);
 module.exports = app;

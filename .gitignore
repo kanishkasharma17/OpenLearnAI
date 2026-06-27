@@ -1,2 +1,12 @@
 backend/node_modules/ 
 backend/.env 
+# Python
+ml/venv/
+__pycache__/
+*.pyc
+
+# ML models (optional)
+ml/models/*.pkl
+
+# Dataset (optional if very large)
+# ml/data/*.csv
