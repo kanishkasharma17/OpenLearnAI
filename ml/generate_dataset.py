@@ -3,6 +3,119 @@ import pandas as pd
 
 random.seed(42)
 
+domain_recommendations = {
+
+    "Programming": {
+        "Beginner": [
+            "Programming Basics",
+            "Introduction to C++"
+        ],
+        "Intermediate": [
+            "Object-Oriented Programming",
+            "Data Structures"
+        ],
+        "Advanced": [
+            "Competitive Programming",
+            "System Design"
+        ]
+    },
+
+    "DSA": {
+        "Beginner": [
+            "Programming Basics",
+            "Data Structures"
+        ],
+        "Intermediate": [
+            "Algorithms",
+            "Advanced Data Structures"
+        ],
+        "Advanced": [
+            "Advanced Algorithms",
+            "Competitive Programming"
+        ]
+    },
+
+    "Database": {
+        "Beginner": [
+            "Database Fundamentals",
+            "SQL Basics"
+        ],
+        "Intermediate": [
+            "Database Systems",
+            "NoSQL Databases"
+        ],
+        "Advanced": [
+            "Database Optimization",
+            "Distributed Databases"
+        ]
+    },
+
+    "Web Development": {
+        "Beginner": [
+            "HTML CSS JavaScript",
+            "Frontend Basics"
+        ],
+        "Intermediate": [
+            "React Development",
+            "Node.js Backend"
+        ],
+        "Advanced": [
+            "Full Stack Development",
+            "Cloud Deployment"
+        ]
+    },
+
+    "Machine Learning": {
+        "Beginner": [
+            "Python for ML",
+            "Machine Learning Basics"
+        ],
+        "Intermediate": [
+            "Machine Learning",
+            "Feature Engineering"
+        ],
+        "Advanced": [
+            "Deep Learning",
+            "MLOps"
+        ]
+    },
+
+    "Computer Networks": {
+        "Beginner": [
+            "Networking Basics",
+            "Internet Fundamentals"
+        ],
+        "Intermediate": [
+            "Computer Networks",
+            "Network Security"
+        ],
+        "Advanced": [
+            "Cloud Networking",
+            "Distributed Systems"
+        ]
+    },
+
+    "Operating Systems": {
+        "Beginner": [
+            "Operating System Basics",
+            "Linux Fundamentals"
+        ],
+        "Intermediate": [
+            "Operating Systems",
+            "Process Management"
+        ],
+        "Advanced": [
+            "Kernel Programming",
+            "System Programming"
+        ]
+    }
+
+}
+
+
+def assign_recommendation(domain, difficulty):
+    return random.choice(domain_recommendations[domain][difficulty])
+
 domains = [
     "Programming",
     "DSA",
@@ -98,6 +211,11 @@ for student_id in range(1, 10001):
         preferred_difficulty = "Beginner"
         risk_level = "High"
 
+    recommended_course = assign_recommendation(
+        preferred_domain,
+        preferred_difficulty
+    )
+
     if average_quiz_score >= 90:
 
         recommendation = random.choice([
@@ -151,7 +269,7 @@ for student_id in range(1, 10001):
         weekly_sessions,
         learning_streak,
         preferred_difficulty,
-        recommendation,
+        recommended_course,
         risk_level
     ])
 

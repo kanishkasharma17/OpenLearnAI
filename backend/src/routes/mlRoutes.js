@@ -1,10 +1,13 @@
-const express=require("express");
+const express = require("express");
 
-const router=express.Router();
+const router = express.Router();
 
-const authMiddleware=require("../middleware/authMiddleware");
+const authMiddleware = require("../middleware/authMiddleware");
 
-const {getTrainingData}=require("../controllers/mlController");
+const {
+    getTrainingData,
+    getRecommendation
+} = require("../controllers/mlController");
 
 router.get(
     "/training-data",
@@ -12,4 +15,10 @@ router.get(
     getTrainingData
 );
 
-module.exports=router;
+router.get(
+    "/recommendation",
+    authMiddleware,
+    getRecommendation
+);
+
+module.exports = router;

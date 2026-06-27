@@ -42,3 +42,30 @@ GROUP BY u.id,u.name;
 
 real_df=pd.read_sql(query,connection)
 print(real_df)
+
+import random
+real_df["preferred_domain"]=[
+    random.choice([
+        "Programming",
+        "DSA",
+        "Database",
+        "Machine Learning"
+    ])
+    for _ in range(len(real_df))
+]
+
+synthetic=pd.read_csv("data/synthetic_students.csv")
+
+combined =pd.concat(
+    [
+        synthetic,
+        real_df
+    ],
+    ignore_index=True
+)
+
+
+combined.to_csv(
+    "data/training_dataset.csv",
+    index=False
+)
