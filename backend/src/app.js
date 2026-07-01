@@ -21,6 +21,7 @@ const courseProgressRoutes=require("./routes/courseProgressRoutes");
 const aiQuizRoutes=require("./routes/aiQuizRoutes");
 const quizSubmissionRoutes=require("./routes/quizSubmissionRoutes");
 const weakTopicRoutes=require("./routes/weakTopicRoutes");
+const errorHandler=require("./middleware/errorMiddleware");
 app.use(cors());
 app.use(express.json());
 
@@ -44,4 +45,5 @@ app.use("/api/student-intelligence",studentIntelligenceRoutes);
 app.use("/api/course-progress",courseProgressRoutes);
 app.use("/api/ai",aiQuizRoutes);
 app.use("/api/weak-topics",weakTopicRoutes);
+app.use(errorHandler);
 module.exports = app;
