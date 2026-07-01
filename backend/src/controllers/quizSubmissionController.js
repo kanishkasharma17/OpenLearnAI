@@ -2,7 +2,7 @@ const {
     submitQuiz
 } = require("../services/quizSubmissionService");
 
-const submit = async (req,res)=>{
+const submit = async (req,res,next)=>{
 
     try{
 
@@ -23,13 +23,7 @@ const submit = async (req,res)=>{
 
     catch(error){
 
-        console.error(error);
-
-        res.status(500).json({
-
-            message:error.message
-
-        });
+        next(error);
 
     }
 

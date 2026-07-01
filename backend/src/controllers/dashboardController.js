@@ -1,6 +1,6 @@
 const pool = require("../config/db");
 
-const getStudentDashboard = async (req, res) => {
+const getStudentDashboard = async (req, res,next) => {
     try {
         const studentId = req.user.id;
 
@@ -48,14 +48,10 @@ const getStudentDashboard = async (req, res) => {
         });
 
     } catch (error) {
-        console.error(error);
-
-        res.status(500).json({
-            message: "Server Error"
-        });
+        next(error);
     }
 };
-const getLeaderboard = async (req, res) => {
+const getLeaderboard = async (req, res,next) => {
     try {
 
         const result = await pool.query(
@@ -73,14 +69,10 @@ const getLeaderboard = async (req, res) => {
         res.json(result.rows);
 
     } catch (error) {
-        console.error(error);
-
-        res.status(500).json({
-            message: "Server Error"
-        });
+        next(error);
     }
 };
-const getCourseAnalytics = async (req, res) => {
+const getCourseAnalytics = async (req, res,next) => {
     try {
         const courseId = req.params.courseId;
 
@@ -123,13 +115,10 @@ const getCourseAnalytics = async (req, res) => {
         });
 
     } catch (error) {
-        console.error(error);
-        res.status(500).json({
-            message: "Server Error"
-        });
+        next(error);
     }
 };
-const getTopStudents = async (req, res) => {
+const getTopStudents = async (req, res,next) => {
     
     try {
         const courseId = req.params.courseId;
@@ -154,11 +143,7 @@ const getTopStudents = async (req, res) => {
         res.json(result.rows);
 
     } catch (error) {
-        console.error(error);
-
-        res.status(500).json({
-            message: "Server Error"
-        });
+       next(error);
     }
 };
 

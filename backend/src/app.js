@@ -22,6 +22,8 @@ const aiQuizRoutes=require("./routes/aiQuizRoutes");
 const quizSubmissionRoutes=require("./routes/quizSubmissionRoutes");
 const weakTopicRoutes=require("./routes/weakTopicRoutes");
 const errorHandler=require("./middleware/errorMiddleware");
+const swaggerUi = require("swagger-ui-express");
+const swaggerSpec = require("./config/swagger");
 app.use(cors());
 app.use(express.json());
 
@@ -46,4 +48,6 @@ app.use("/api/course-progress",courseProgressRoutes);
 app.use("/api/ai",aiQuizRoutes);
 app.use("/api/weak-topics",weakTopicRoutes);
 app.use(errorHandler);
+app.use("/api-docs",swaggerUi.serve,swaggerUi.setup(swaggerSpec)
+);
 module.exports = app;

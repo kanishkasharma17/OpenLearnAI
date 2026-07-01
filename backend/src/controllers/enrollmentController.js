@@ -1,6 +1,6 @@
 const pool = require("../config/db");
 
-const enrollCourse = async (req, res) => {
+const enrollCourse = async (req, res,next) => {
     try {
         const studentId = req.user.id;
         const { course_id } = req.body;
@@ -19,7 +19,7 @@ const enrollCourse = async (req, res) => {
         });
 
     } catch (error) {
-        console.error(error);
+        
 
         if (error.code === "23505") {
             return res.status(400).json({
@@ -27,13 +27,11 @@ const enrollCourse = async (req, res) => {
             });
         }
 
-        res.status(500).json({
-            message: "Server Error"
-        });
+        next(error);
     }
 };
 
-const getMyCourses = async (req, res) => {
+const getMyCourses = async (req, res,next) => {
     try {
         const studentId = req.user.id;
 
@@ -55,15 +53,11 @@ const getMyCourses = async (req, res) => {
         res.json(result.rows);
 
     } catch (error) {
-        console.error(error);
-
-        res.status(500).json({
-            message: "Server Error"
-        });
+        next(error);
     }
 };
 
-const getCourseStudents = async (req, res) => {
+const getCourseStudents = async (req, res,next) => {
     try {
         const courseId = req.params.id;
 
@@ -82,11 +76,7 @@ const getCourseStudents = async (req, res) => {
         res.json(result.rows);
 
     } catch (error) {
-        console.error(error);
-
-        res.status(500).json({
-            message: "Server Error"
-        });
+        next(error);
     }
 };
 

@@ -2,7 +2,7 @@ const {
     detectWeakTopics
 } = require("../services/weakTopicService");
 
-const getWeakTopics = async (req, res) => {
+const getWeakTopics = async (req, res,next) => {
 
     try {
 
@@ -14,11 +14,7 @@ const getWeakTopics = async (req, res) => {
 
     catch (error) {
 
-        console.error(error);
-
-        res.status(500).json({
-            message: error.message
-        });
+        next(error);
 
     }
 

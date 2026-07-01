@@ -23,14 +23,11 @@ const completeLesson = async (req, res) => {
         });
 
     } catch (error) {
-        console.error(error);
-        res.status(500).json({
-            message: "Server Error"
-        });
+        next(error);
     }
 };
 
-const getMyProgress = async (req, res) => {
+const getMyProgress = async (req, res,next) => {
     try {
         const studentId = req.user.id;
         const courseId = req.params.courseId;
@@ -68,10 +65,7 @@ const getMyProgress = async (req, res) => {
         });
 
     } catch (error) {
-        console.error(error);
-        res.status(500).json({
-            message: "Server Error"
-        });
+        next(error);
     }
 };
 

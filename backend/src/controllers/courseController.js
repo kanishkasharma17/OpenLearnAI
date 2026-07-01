@@ -1,6 +1,6 @@
 const pool = require("../config/db");
 
-const createCourse = async (req, res) => {
+const createCourse = async (req, res,next) => {
     try {
         const { title, description } = req.body;
 
@@ -26,15 +26,11 @@ const createCourse = async (req, res) => {
         });
 
     } catch (error) {
-        console.error(error);
-
-        res.status(500).json({
-            message: "Server Error"
-        });
+        next(error);
     }
 };
 
-const getCourses = async (req, res) => {
+const getCourses = async (req, res,next) => {
     try {
 
         const result = await pool.query(
@@ -51,11 +47,7 @@ const getCourses = async (req, res) => {
         res.status(200).json(result.rows);
 
     } catch (error) {
-        console.error(error);
-
-        res.status(500).json({
-            message: "Server Error"
-        });
+        next(error);
     }
 };
 

@@ -1,7 +1,7 @@
 const pool = require("../config/db");
 const axios =require("axios");
 
-const getTrainingData = async (req,res)=>{
+const getTrainingData = async (req,res,next)=>{
 
     try{
 
@@ -48,17 +48,13 @@ const getTrainingData = async (req,res)=>{
     }
     catch(error){
 
-        console.error(error);
-
-        res.status(500).json({
-            message:"Server Error"
-        });
+        next(error);
 
     }
 
 };
 
-const getRecommendation = async (req, res) => {
+const getRecommendation = async (req, res,next) => {
 
     try {
 
@@ -147,11 +143,7 @@ const getRecommendation = async (req, res) => {
     }
     catch(error){
 
-        console.error(error);
-
-        res.status(500).json({
-            message:"Server Error"
-        });
+        next(error);
 
     }
 

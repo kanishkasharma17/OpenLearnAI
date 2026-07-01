@@ -8,6 +8,19 @@ const {
     getWeakTopics
 } = require("../controllers/weakTopicController");
 
+/**
+ * @swagger
+ * /api/weak-topics:
+ *   get:
+ *     summary: Get weak topics identified from quiz attempts
+ *     tags:
+ *       - Analytics
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Weak topics retrieved successfully
+ */
 router.get(
     "/",
     auth,

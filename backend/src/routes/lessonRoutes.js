@@ -10,13 +10,44 @@ const {
     getCourseLessons
 } = require("../controllers/lessonController");
 
+/**
+ * @swagger
+ * /api/lessons:
+ *   post:
+ *     summary: Create a lesson
+ *     tags:
+ *       - Lessons
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       201:
+ *         description: Lesson created
+ */
 router.post(
     "/",
     authMiddleware,
     teacherMiddleware,
     createLesson
 );
-
+/**
+ * @swagger
+ * /api/lessons/course/{courseId}:
+ *   get:
+ *     summary: Get lessons of a course
+ *     tags:
+ *       - Lessons
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: courseId
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: List of lessons
+ */
 router.get(
     "/course/:courseId",
     authMiddleware,
