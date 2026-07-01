@@ -6,6 +6,9 @@ const authMiddleware = require("../middleware/authMiddleware");
 const teacherMiddleware = require("../middleware/teacherMiddleware");
 
 const {
+    submit
+} = require("../controllers/quizSubmissionController");
+const {
     createQuiz,
     getCourseQuizzes
 } = require("../controllers/quizController");
@@ -22,5 +25,9 @@ router.get(
     authMiddleware,
     getCourseQuizzes
 );
-
+router.post(
+    "/:quizId/submit",
+    authMiddleware,
+    submit
+);
 module.exports = router;

@@ -55,12 +55,26 @@ def predict():
         print(df.columns.tolist())
         print(df)
         prediction = model.predict(df)
+        probabilities=model.predict_proba(df)[0]
+        classes=target_encoder.inverse_transform(model.classes_)
 
-        recommended_course = target_encoder.inverse_transform(prediction)
+        recommendations = sorted(
+    zip(classes, probabilities),
+    key=lambda x: x[1],
+    reverse=True
+)[:3]
 
+        results = []
+        for course, probability in recommendations:
+            results.append({
+        "course": course,
+        "confidence": round(float(probability) * 100, 2)
+    })
         return jsonify({
-            "recommended_course": recommended_course[0]
-        })
+    "recommended_course": results[0]["course"],
+    "confidence": results[0]["confidence"],
+    "top_recommendations": results
+})
 
     except Exception as e:
         return jsonify({

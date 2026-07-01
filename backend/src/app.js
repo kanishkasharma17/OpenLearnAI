@@ -16,6 +16,11 @@ const progressRoutes=require("./routes/progressRoutes");
 const dashboardRoutes=require("./routes/dashboardRoutes");
 const activityRoutes=require("./routes/activityRoutes");
 const mlRoutes=require("./routes/mlRoutes");
+const studentIntelligenceRoutes=require("./routes/studentIntelligenceRoutes")
+const courseProgressRoutes=require("./routes/courseProgressRoutes");
+const aiQuizRoutes=require("./routes/aiQuizRoutes");
+const quizSubmissionRoutes=require("./routes/quizSubmissionRoutes");
+const weakTopicRoutes=require("./routes/weakTopicRoutes");
 app.use(cors());
 app.use(express.json());
 
@@ -35,4 +40,8 @@ app.use("/api/progress",progressRoutes);
 app.use("/api/dashboard",dashboardRoutes);
 app.use("/api/activity",activityRoutes);
 app.use("/api/ml",mlRoutes);
+app.use("/api/student-intelligence",studentIntelligenceRoutes);
+app.use("/api/course-progress",courseProgressRoutes);
+app.use("/api/ai",aiQuizRoutes);
+app.use("/api/weak-topics",weakTopicRoutes);
 module.exports = app;
