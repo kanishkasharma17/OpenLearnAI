@@ -1,41 +1,35 @@
 const pool =require("../config/db");
 
-const updateStudentStatistics=async(studentId)=>{
-    const courses=await pool.query(
+const updateStudentStatistics=async(studentId,client=pool)=>{
+    const courses=await client.query(
         `SELECT COUNT(*)
         FROM enrollments
         WHERE student_id=$1`,
         [studentId]
     );
-    const lessons=await pool.query(
+    const lessons=await client.query(
         `SELECT COUNT(*)
         FROM student_progress
         WHERE student_id=$1
         AND completed=TRUE`,
         [studentId]
     );
-    const attempts=await pool.query(
+    const attempts=await client.query(
         `SELECT COUNT(*)
         FROM quiz_attempts
         WHERE student_id=$1`,
         [studentId]
     );
-    const average=await pool.query(
+    const average=await client.query(
         `SELECT 
         COALESCE(AVG(score),0) AS average_score
         FROM quiz_attempts
         WHERE student_id=$1`,
         [studentId]
     );
-    // const studyTime=await pool.query(
-    //     `select 
-    //     COALESCE(SUM(duration_miutes),0)
-    //     FROM learning_activity
-    //     WHERE student_id=$1`,
-    //     [studentId]
-    // );
+    
 
-    const totalLessons = await pool.query(
+    const totalLessons = await client.query(
 `
     SELECT COUNT(l.id) AS total_lessons
     FROM lessons l
@@ -69,7 +63,7 @@ const updateStudentStatistics=async(studentId)=>{
     Math.min(quizAttempts * 5, 100) * 0.15 +
     Math.min(totalStudyTime / 10, 100) * 0.15;
 
-    await pool.query(
+    await client.query(
 `
     UPDATE student_statistics
     SET
