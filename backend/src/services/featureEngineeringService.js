@@ -8,13 +8,23 @@ const buildFeatures=async(studentId)=>{
 
     const stats=await calculateStatistics(studentId);
 
-    const preference=await pool.query(
-    `
-    SELECT *
-    FROM student_preferences
-    WHERE student_id=$1
-    `,
-    [studentId]
+    await pool.query(
+`
+INSERT INTO student_preferences(student_id)
+VALUES($1)
+ON CONFLICT(student_id)
+DO NOTHING
+`,
+[studentId]
+);
+
+    const preference = await pool.query(
+`
+SELECT *
+FROM student_preferences
+WHERE student_id=$1
+`,
+[studentId]
 );
     let riskLevel="Low";
     if(Number(stats.completion_rate)<40)
@@ -23,7 +33,7 @@ const buildFeatures=async(studentId)=>{
         riskLevel="Medium"
     return{
         preferred_domain:
-            preference.rows[0].preferred_domain,
+            preference.rows[0].preferred_domain || "Machine Learning",
         courses_enrolled:
             Number(stats.courses_enrolled),
         lessons_completed:
@@ -41,7 +51,7 @@ const buildFeatures=async(studentId)=>{
         learning_streak:
             Number(stats.learning_streak),
         preferred_difficulty:
-            preference.rows[0].preferred_difficulty,
+            preference.rows[0].preferred_difficulty || "Intermediate",
         risk_level:
             riskLevel
     };

@@ -1,6 +1,16 @@
 const pool =require("../config/db");
 
 const updateStudentStatistics=async(studentId,client=pool)=>{
+    await client.query(
+`
+INSERT INTO student_statistics(student_id)
+VALUES($1)
+ON CONFLICT(student_id)
+DO NOTHING
+`,
+[studentId]
+);
+
     const courses=await client.query(
         `SELECT COUNT(*)
         FROM enrollments
