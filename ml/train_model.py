@@ -61,22 +61,29 @@ accuracy = accuracy_score(
 print()
 print("Accuracy:", accuracy)
 
-#SAVE RESULTS
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_DIR = os.path.join(BASE_DIR, "models")
+
+os.makedirs(MODEL_DIR, exist_ok=True)
+print("Current working directory:", os.getcwd())
+print("Current file:", __file__)
+print("Models directory exists:", os.path.exists("models"))
+print("Absolute model path:", os.path.abspath("models"))
 joblib.dump(
     model,
-    "models/recommendation_model.pkl"
+    os.path.join(MODEL_DIR, "recommendation_model.pkl")
 )
 
 joblib.dump(
     encoders,
-    "models/feature_encoders.pkl"
+    os.path.join(MODEL_DIR, "feature_encoders.pkl")
 )
 
 joblib.dump(
     target_encoder,
-    "models/target_encoder.pkl"
+    os.path.join(MODEL_DIR, "target_encoder.pkl")
 )
 
-print()
 print("Recommendation model saved.")
-
