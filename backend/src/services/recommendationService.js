@@ -16,11 +16,11 @@ const {
 const getRecommendation = async (studentId) => {
 
     const features = await buildFeatures(studentId);
-
+    console.log("ML URL:", process.env.ML_SERVICE_URL);
     const response = await axios.post(
-        "http://127.0.0.1:5000/predict",
-        features
-    );
+    process.env.ML_SERVICE_URL + "/predict",
+    features
+);
 
     const filtered = await filterRecommendations(
         studentId,
