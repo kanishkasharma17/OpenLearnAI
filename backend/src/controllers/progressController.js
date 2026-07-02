@@ -1,6 +1,6 @@
 const pool = require("../config/db");
 
-const completeLesson = async (req, res) => {
+const completeLesson = async (req, res,next) => {
     try {
         const studentId = req.user.id;
         const { lesson_id } = req.body;

@@ -50,4 +50,6 @@ app.use("/api/weak-topics",weakTopicRoutes);
 app.use(errorHandler);
 app.use("/api-docs",swaggerUi.serve,swaggerUi.setup(swaggerSpec)
 );
+
+
 module.exports = app;
