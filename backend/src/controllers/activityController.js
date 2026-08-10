@@ -39,7 +39,7 @@ const logActivity = async (req, res) => {
     }
 };
 
-const getMyActivity = async (req, res) => {
+const getMyActivity = async (req, res, next) => {
     try {
 
         const student_id = req.user.id;

@@ -47,6 +47,7 @@ app.use("/api/student-intelligence",studentIntelligenceRoutes);
 app.use("/api/course-progress",courseProgressRoutes);
 app.use("/api/ai",aiQuizRoutes);
 app.use("/api/weak-topics",weakTopicRoutes);
+app.use("/api/quiz-submissions",quizSubmissionRoutes);
 app.use(errorHandler);
 app.use("/api-docs",swaggerUi.serve,swaggerUi.setup(swaggerSpec)
 );

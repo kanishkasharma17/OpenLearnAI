@@ -1,6 +1,13 @@
 const pool = require("../config/db");
 
-const submitQuiz = async (req, res) => {
+// NOTE: superseded by quizSubmissionController.submit (mounted at
+// POST /api/quizzes/:quizId/submit), which also records per-question
+// attempts (needed for weak-topic detection/risk analysis) and
+// updates student_statistics. This route is kept for backwards
+// compatibility but the frontend uses the newer one - fixing the
+// crash-on-error bug here (missing `next` param) without changing
+// its behaviour otherwise.
+const submitQuiz = async (req, res, next) => {
     try {
         const studentId = req.user.id;
 

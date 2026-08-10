@@ -1,0 +1,153 @@
+.teacher-dashboard {
+    padding: 24px 70px;
+    max-width: 1000px;
+}
+
+.teacher-dashboard h1 {
+    color: #ffffff;
+    margin-bottom: 16px;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.summary-card {
+    background: #DBE2DC;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,.15);
+}
+
+.summary-card.at-risk {
+    background: #f4d9d3;
+}
+
+.summary-value {
+    display: block;
+    font-size: 32px;
+    font-weight: 700;
+    color: #335765;
+}
+
+.summary-label {
+    color: #4b5563;
+    font-size: 13px;
+}
+
+.empty-state {
+    color: #a8c4fb;
+}
+
+.empty-state a {
+    color: #74A8A4;
+}
+
+.course-overview-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.course-overview-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px 24px;
+    box-shadow: 0 10px 20px rgba(0,0,0,.15);
+}
+
+.course-overview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.course-overview-header h2 {
+    color: #335765;
+}
+
+.risk-link {
+    color: #74A8A4;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.risk-link:hover {
+    text-decoration: underline;
+}
+
+.course-overview-stats {
+    display: flex;
+    gap: 28px;
+    margin: 14px 0;
+}
+
+.course-overview-stats > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: #335765;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.risk-breakdown {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.risk-chip {
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.risk-chip.empty {
+    background: #9aa5a9;
+}
+
+.top-risk-students {
+    border-top: 1px solid #f0f0f0;
+    padding-top: 10px;
+}
+
+.top-risk-students h4 {
+    color: #335765;
+    margin-bottom: 6px;
+    font-size: 13px;
+}
+
+.top-risk-students ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.top-risk-students li {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.mini-risk-badge {
+    font-weight: 600;
+    font-size: 13px;
+}

@@ -1,0 +1,84 @@
+.courses-page {
+    padding: 24px 40px;
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.course-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 16px;
+    background: #fff;
+    color:rgb(59, 119, 145);
+}
+
+.course-teacher {
+    color: #6b7280;
+    font-size: 13px;
+    margin: 4px 0 8px;
+}
+
+.course-card button {
+    margin-top: 10px;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    background: #335765;
+    color: #fff;
+    cursor: pointer;
+}
+
+.course-card button:disabled {
+    background: #9aa5a9;
+    cursor: not-allowed;
+}
+
+.risk-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #74A8A4;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.risk-link:hover {
+    text-decoration: underline;
+}
+
+.create-course-block {
+    margin: 16px 0;
+}
+
+.create-course-block button.secondary {
+    background: #74A8A4;
+}
+
+.create-course-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 420px;
+    margin-top: 12px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 16px;
+}
+
+.create-course-form input,
+.create-course-form textarea {
+    padding: 8px 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-family: inherit;
+}
+
+.create-course-form textarea {
+    min-height: 70px;
+    resize: vertical;
+}

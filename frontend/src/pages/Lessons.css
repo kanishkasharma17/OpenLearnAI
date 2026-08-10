@@ -1,0 +1,68 @@
+.lessons-page {
+    padding: 24px 40px;
+    max-width: 760px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 16px;
+    color: #335765;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.progress-summary {
+    color: #4b5563;
+    margin-bottom: 12px;
+}
+
+.lesson-list {
+    list-style: none;
+    padding: 0;
+}
+
+.lesson-list li {
+    padding: 12px 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.lesson-list a {
+    color: #335765;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.lesson-content {
+    white-space: pre-wrap;
+    line-height: 1.6;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 16px 0 24px;
+}
+
+.lesson-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.lesson-actions button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    background: #335765;
+    color: #fff;
+    cursor: pointer;
+}
+
+.lesson-actions button:disabled {
+    background: #9aa5a9;
+    cursor: not-allowed;
+}
+
+.lesson-actions button.secondary {
+    background: #74A8A4;
+}

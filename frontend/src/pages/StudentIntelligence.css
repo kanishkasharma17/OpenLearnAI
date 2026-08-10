@@ -1,0 +1,61 @@
+.risk-overview {
+    padding: 24px 40px;
+    max-width: 1000px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 16px;
+    color: #335765;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.risk-table {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.risk-row {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 14px 18px;
+}
+
+.risk-row-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.student-name {
+    font-weight: 700;
+}
+
+.student-email {
+    color: #6b7280;
+    font-size: 13px;
+}
+
+.risk-badge-wrap {
+    margin-top: 6px;
+}
+
+.risk-badge {
+    display: inline-block;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.risk-row-reasons {
+    margin: 8px 0 0;
+    padding-left: 18px;
+    font-size: 13px;
+    color: #4b5563;
+}

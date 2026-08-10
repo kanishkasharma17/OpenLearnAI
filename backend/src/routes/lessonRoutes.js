@@ -7,7 +7,8 @@ const teacherMiddleware = require("../middleware/teacherMiddleware");
 
 const {
     createLesson,
-    getCourseLessons
+    getCourseLessons,
+    getLessonById
 } = require("../controllers/lessonController");
 
 /**
@@ -52,6 +53,31 @@ router.get(
     "/course/:courseId",
     authMiddleware,
     getCourseLessons
+);
+
+/**
+ * @swagger
+ * /api/lessons/{id}:
+ *   get:
+ *     summary: Get a single lesson (with completion status and linked quiz)
+ *     tags:
+ *       - Lessons
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Lesson retrieved
+ */
+router.get(
+    "/:id",
+    authMiddleware,
+    getLessonById
 );
 
 module.exports = router;

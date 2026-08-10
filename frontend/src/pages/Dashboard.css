@@ -1,0 +1,293 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI,sans-serif;
+}
+
+body{
+    background:#24313A;
+}
+
+/* ---------- Navbar ---------- */
+
+.navbar{
+    background:#335765;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 70px;
+    box-shadow:0 4px 15px rgba(0,0,0,.15);
+}
+
+.nav-links{
+    display:flex;
+    gap:20px;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    opacity:.85;
+}
+
+.nav-links a:hover{
+    opacity:1;
+    text-decoration:underline;
+}
+
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+.logout-btn{
+    background:#7F543D;
+    color:white;
+    border:none;
+    padding:12px 28px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+    transition:.3s;
+}
+
+.logout-btn:hover{
+    background:#6b4632;
+}
+
+/* ---------- Dashboard ---------- */
+
+.dashboard{
+    max-width:1400px;
+    margin:auto;
+    padding:50px;
+}
+
+.dashboard h1{
+    text-align:center;
+    color:#DBE2DC;
+    font-size:60px;
+    margin-bottom:50px;
+}
+
+/* ---------- Stats ---------- */
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+
+.card{
+    background:#DBE2DC;
+    border-radius:18px;
+    padding:40px;
+    text-align:center;
+    transition:.3s;
+    box-shadow:0 10px 25px rgba(0,0,0,.18);
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    background:#B6D9E0;
+}
+
+.card h3{
+    color:#335765;
+    font-size:24px;
+    margin-bottom:25px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+}
+
+.card p{
+    color:#7F543D;
+    font-size:30px;
+    font-weight:bold;
+}
+.card-icon{
+    color:#74A8A4;
+    font-size:28px;
+}
+.card{
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 30px rgba(0,0,0,.2);
+}
+
+/* ---------- Recommendation ---------- */
+
+.recommendation-card {
+    background: #DBE2DC;
+    color: #335765;
+    border-radius: 20px;
+    padding: 35px;
+    margin-top: 40px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.2);
+}
+
+.recommendation-card h2{
+    text-align:center;
+    color:#335765;
+    margin-bottom:25px;
+}
+
+.recommendation-card h3{
+    text-align:center;
+    color:#7F543D;
+    font-size:38px;
+    margin-bottom:15px;
+}
+
+.recommendation-card p{
+    font-size:22px;
+    margin:18px 0;
+}
+
+.recommendation-card strong{
+    color:#7F543D;
+    
+}
+
+.recommendation-card h4{
+    margin-top:30px;
+    color:#335765;
+    font-size:28px;
+}
+
+.recommendation-card ul,
+.recommendation-card ol{
+    margin-top:15px;
+    margin-left:30px;
+    display:block;
+    padding-left:25px;
+}
+
+.recommendation-card li{
+    display:list-item;
+    font-size:22px;
+    margin:10px 0;
+    color:#335765;
+}
+.topic-list,
+.recommendation-list{
+    margin-top:20px;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.topic-item,
+.recommendation-item{
+    display:grid;
+    grid-template-columns:40px 1fr 80px;
+    align-items:center;
+    padding:12px 18px;
+    border-radius:12px;
+    background:#B6D9E0;
+    color:#335765;
+    font-size:22px;
+    font-weight:600;
+}
+
+.recommendation-item{
+    background:#DBE2DC;
+}
+
+.topic-item span:last-child,
+.recommendation-item span:last-child{
+    text-align:right;
+    color:#7F543D;
+    font-weight:700;
+}
+.recommendation-icon{
+    color:#7F543D;
+    margin-right:10px;
+}
+
+
+/* .progress-bar{
+    width:100%;
+    height:10px;
+    background:#DBE2DC;
+    border-radius:20px;
+    overflow:hidden;
+    margin:15px 0;
+}
+
+.progress-fill{
+    height:100%;
+    background:#74A8A4;
+    transition:.5s;
+} */
+
+.progress-wrapper{
+    width:120px;
+    height:120px;
+    margin:20px auto 0;
+}
+
+.chart-card{
+
+    margin-top:50px;
+
+    background:#DBE2DC;
+
+    border-radius:20px;
+
+    padding:35px;
+
+    box-shadow:0 10px 20px rgba(0,0,0,.15);
+
+}
+
+.chart-card h2{
+
+    text-align:center;
+
+    color:#335765;
+
+    margin-bottom:25px;
+
+}
+.risk-card {
+    text-align: left;
+}
+
+.risk-reasons {
+    margin: 8px 0 0;
+    padding-left: 18px;
+    font-size: 13px;
+    color: #4b5563;
+}
+
+.learning-path-card {
+    background: #DBE2DC;
+    border-radius: 20px;
+    padding: 25px 35px;
+    margin: 20px 0;
+    box-shadow: 0 10px 20px rgba(0,0,0,.15);
+}
+
+.learning-path-card h4 {
+    margin-bottom: 6px;
+    color: #335765;
+}
+
+.learning-path-card ul {
+    margin: 0 0 16px;
+    padding-left: 20px;
+}
+
+.step-reason {
+    color: #6b7280;
+    font-size: 13px;
+}

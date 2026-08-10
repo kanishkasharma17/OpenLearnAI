@@ -38,6 +38,7 @@ const getCourses = async (req, res,next) => {
                 courses.id,
                 courses.title,
                 courses.description,
+                courses.teacher_id,
                 users.name AS teacher
              FROM courses
              JOIN users

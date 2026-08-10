@@ -49,6 +49,30 @@ DO NOTHING
 `,
 [studentId]
 );
+
+    const studyTime = await client.query(
+        `SELECT COALESCE(SUM(duration_minutes),0) AS total_minutes
+        FROM learning_activity
+        WHERE student_id=$1`,
+        [studentId]
+    );
+
+    const weeklySessions = await client.query(
+        `SELECT COUNT(DISTINCT DATE(created_at)) AS session_days
+        FROM learning_activity
+        WHERE student_id=$1
+        AND created_at >= NOW() - INTERVAL '7 days'`,
+        [studentId]
+    );
+
+    const activityDates = await client.query(
+        `SELECT DISTINCT DATE(created_at) AS activity_date
+        FROM learning_activity
+        WHERE student_id=$1
+        ORDER BY activity_date DESC`,
+        [studentId]
+    );
+
     const coursesEnrolled = Number(courses.rows[0].count);
 
     const lessonsCompleted = Number(lessons.rows[0].count);
@@ -59,7 +83,13 @@ DO NOTHING
 
     const totalLessonCount = Number(totalLessons.rows[0].total_lessons);
 
-    const totalStudyTime = 0;
+    const totalStudyTime = Number(studyTime.rows[0].total_minutes);
+
+    const weeklySessionCount = Number(weeklySessions.rows[0].session_days);
+
+    const learningStreak = calculateStreak(
+        activityDates.rows.map(row => row.activity_date)
+    );
 
     const completionRate =
         totalLessonCount === 0
@@ -84,8 +114,10 @@ DO NOTHING
     total_study_time=$5,
     completion_rate=$6,
     engagement_score=$7,
+    weekly_sessions=$8,
+    learning_streak=$9,
     updated_at=NOW()
-    WHERE student_id=$8
+    WHERE student_id=$10
 `,
 [
     coursesEnrolled,
@@ -95,11 +127,56 @@ DO NOTHING
     totalStudyTime,
     completionRate,
     engagementScore,
+    weeklySessionCount,
+    learningStreak,
     studentId
 ]
 );
     
 };
+
+/**
+ * Given a list of dates (most recent first) a student had at least one
+ * logged activity, returns how many consecutive days of activity lead
+ * up to today (or yesterday, so a streak isn't lost just because a
+ * student hasn't logged anything yet today).
+ */
+function calculateStreak(activityDates) {
+    if (!activityDates.length) return 0;
+
+    const toDateOnly = (d) => {
+        const date = new Date(d);
+        date.setHours(0, 0, 0, 0);
+        return date;
+    };
+
+    const today = toDateOnly(new Date());
+    const mostRecent = toDateOnly(activityDates[0]);
+
+    const dayDiff = Math.round((today - mostRecent) / 86400000);
+
+    // Most recent activity is older than yesterday -> streak is broken
+    if (dayDiff > 1) return 0;
+
+    let streak = 1;
+    let cursor = mostRecent;
+
+    for (let i = 1; i < activityDates.length; i++) {
+        const current = toDateOnly(activityDates[i]);
+        const diff = Math.round((cursor - current) / 86400000);
+
+        if (diff === 1) {
+            streak++;
+            cursor = current;
+        } else if (diff === 0) {
+            continue;
+        } else {
+            break;
+        }
+    }
+
+    return streak;
+}
 const calculateStatistics=async (studentId)=>{
     await updateStudentStatistics(studentId);
     const result=await pool.query(

@@ -16,7 +16,11 @@ const {
 const getRecommendation = async (studentId) => {
 
     const features = await buildFeatures(studentId);
+    
     console.log("ML URL:", process.env.ML_SERVICE_URL);
+    console.log("Features being sent:");
+    console.log(features);
+
     const response = await axios.post(
     process.env.ML_SERVICE_URL + "/predict",
     features

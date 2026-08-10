@@ -1,0 +1,38 @@
+.profile-page {
+    padding: 24px 40px;
+    max-width: 480px;
+}
+
+.profile-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 16px;
+    color: rgb(32, 145, 145);
+}
+
+.profile-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.profile-row:last-child {
+    border-bottom: none;
+}
+
+.label {
+    color: #6b7280;
+}
+
+.role-badge {
+    text-transform: capitalize;
+    background: #DBE2DC;
+    color: #335765;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+}
